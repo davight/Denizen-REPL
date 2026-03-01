@@ -1,7 +1,8 @@
-package commands;
+package main.commands;
 
 import com.denizenscript.denizencore.scripts.ScriptEntry;
 import com.denizenscript.denizencore.scripts.commands.AbstractCommand;
+import main.Main;
 
 public class ExitCommand extends AbstractCommand {
 
@@ -13,6 +14,7 @@ public class ExitCommand extends AbstractCommand {
     }
 
     public static void autoExecute(ScriptEntry scriptEntry) {
+        Main.exit();
     }
 
 }

@@ -1,4 +1,4 @@
-package objects;
+package main.objects;
 
 import com.denizenscript.denizencore.objects.Fetchable;
 import com.denizenscript.denizencore.objects.ObjectTag;
