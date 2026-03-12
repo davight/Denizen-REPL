@@ -1,7 +1,7 @@
 package main.util;
 
-public record Pair<F, S>(F first, S second) {
-    public static <F, S> Pair<F, S> of(F first, S second) {
+public record Pair<T>(T first, T second) {
+    public static <T> Pair<T> of(T first, T second) {
         return new Pair<>(first, second);
     }
 }
