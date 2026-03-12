@@ -13,11 +13,11 @@ public class AutoDeleteWidget extends AbstractWidget {
 
     private final LineReader reader;
 
-    public AutoDeleteWidget(LineReader reader, Set<Pair<Character, Character>> pairs) {
+    public AutoDeleteWidget(LineReader reader, Set<Pair<Character>> pairs) {
         super("auto-delete-" + pairs.toString(), () -> {
             Buffer buffer = reader.getBuffer();
             char prev = (char) buffer.prevChar();
-            for (Pair<Character, Character> pair : pairs) {
+            for (Pair<Character> pair : pairs) {
                 if (prev == pair.first()) {
                     buffer.backspace(1);
                     buffer.delete(1);

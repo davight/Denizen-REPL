@@ -34,6 +34,10 @@ public class VectorTag implements VectorObject {
         this.z = z;
     }
 
+    public static void register() {
+        VectorObject.register(VectorTag.class, tagProcessor);
+    }
+
     @Override
     public String getPrefix() {
         return prefix;
@@ -51,6 +55,11 @@ public class VectorTag implements VectorObject {
 
     @Override
     public String identifySimple() {
+        return identify();
+    }
+
+    @Override
+    public String toString() {
         return identify();
     }
 
