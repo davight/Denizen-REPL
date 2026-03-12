@@ -23,11 +23,18 @@ public class Highlighter implements org.jline.reader.Highlighter {
 
     private static final AttributedStyle DEFINITION = AttributedStyle.DEFAULT.foreground(224, 108, 117).bold();
 
-
     private static final AttributedStyle ERROR = AttributedStyle.DEFAULT.foreground(255, 85, 85);
 
     @Override
     public AttributedString highlight(LineReader reader, String buffer) {
+        AttributedStringBuilder sb = new AttributedStringBuilder(buffer.length());
+        for (String line : buffer.split("\n")) {
+            sb.append(parseLine(line)).append('\n');
+        }
+        return sb.toAttributedString();
+    }
+
+    public AttributedString parseLine(String buffer) {
         AttributedStringBuilder sb = new AttributedStringBuilder();
         int i = 0;
         if (!buffer.startsWith("<")) { // it surely is a command
@@ -67,7 +74,9 @@ public class Highlighter implements org.jline.reader.Highlighter {
                 case ']' -> {
                     sb.append("]", INPUT_BRACKET);
                     if (ctx == INPUT || ctx == STRING || ctx == DEFINITION) {
-                        stack.pop();
+                        if (!stack.isEmpty()) { // might be empty if last was STRING
+                            stack.pop();
+                        }
                     }
                     lastWasTagOpen = false;
                 }
@@ -90,12 +99,10 @@ public class Highlighter implements org.jline.reader.Highlighter {
     }
 
     @Override
-    public void setErrorPattern(Pattern pattern) {
-
+    public void setErrorPattern(Pattern ignored) {
     }
 
     @Override
-    public void setErrorIndex(int i) {
-
+    public void setErrorIndex(int ignored) {
     }
 }
