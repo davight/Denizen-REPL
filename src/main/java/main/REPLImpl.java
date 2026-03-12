@@ -29,7 +29,7 @@ public class REPLImpl implements DenizenImplementation {
 
     @Override
     public String getImplementationVersion() {
-        return Main.VERSION;
+        return Main.version;
     }
 
     @Override

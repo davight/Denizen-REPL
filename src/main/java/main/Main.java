@@ -10,14 +10,17 @@ import main.commands.HelpCommand;
 import main.objects.VectorTag;
 import main.util.ConsoleTagContext;
 import main.terminal.TerminalWindow;
+import main.util.PropertyReader;
 import main.util.Ticker;
 
 import java.util.List;
 
 public class Main {
 
-    public static final String VERSION = "1.1.0";
+    public static final PropertyReader properties = new PropertyReader();
     public static final String NAME = "Denizen REPL";
+
+    public static String version = properties.getProperty("app.version");
 
     public static ConsoleQueue queue;
     public static TerminalWindow terminal;
