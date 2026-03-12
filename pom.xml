@@ -21,6 +21,13 @@
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/davight/Denizen-REPL</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.yaml</groupId>
